@@ -1,7 +1,8 @@
 <?php
-$info=$_POST['action'];
+session_start();
 
-switch($info)
+$regValue = $_GET['regName'];
+switch($var_value)
 {
     case "about" :
         require_once("info.html"); // страница "О Нас"
