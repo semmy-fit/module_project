@@ -1,0 +1,78 @@
+background:no-repeate;
+#navbar {
+  top:0px;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;/*Отменяет маркеры для списка.*/
+  border: 2px solid #0066FF;/*рамка вокруг*/
+  border-radius: 0px 0px;/*закругление углов*/
+  width: 1279px;
+  text-align: center;/*расположение текста по центру*/
+  background-color:red;/*цвет заднего фона*/
+}/*Стиль меню*/
+
+#navbar {
+  top:0px;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  
+  width: 1279px;
+  text-align: center;
+  background-color: #1E4E95;
+color:red;
+}/*Стиль меню*/
+
+#navbar a {
+  color: #fff;
+  padding: 5px 10px;
+  text-decoration: none;/*Отменяет все эффекты, в том числе и подчеркивания у ссылок*/
+  font-weight: bold;/* полужирное начертание шрифта*/
+  display: inline-block;/*блочный элемент, который обтекается другими элементами*/
+  width: 180px;
+}/*положение кнопок*/
+
+#navbar a:hover {
+  border-radius: 20px 5px;
+  background-color: #0066FF;
+}/*тень при наведении на кнопку*/
+
+.head {
+  height: 45px;
+  left:0;
+  right:0;
+  top:0;
+  width:100%;
+  background-image: url(images/Rectangle_3.png);
+  background-repeat:repeat;/*повтор изображения*/
+  position:fixed;/*привязывается к указанной свойствами left, top, right и bottom точке на экране и не меняет своего положения при прокрутке веб-страницы*/
+} /*Рисунок шапки*/
+
+.title{
+  font-size: 25px;
+  padding-top: 0px;/*значение поля от верхнего края содержимого элемент*/
+  text-align: center;
+}/*размер и расположение заголовка */
+
+.footer {
+  border-style: solid;
+  border-width: 1px;/*ширина рамки*/
+  background-image: url(images/Rectangle_3.png);
+  float: none;/*Обтекание элемента не задается.*/
+  width: 100%;
+  padding-top:0px;
+  text-align: center;
+  height: 40px;
+  position:absolute;/*абсолютно позиционирован*/
+
+  left:0;
+  bottom:0;
+  clear: both;/*Отменяет обтекание элемента одновременно с правого и левого края.*/
+  font-size: 12px;
+  
+}/* блок в нижней части страницы...подвал*/
+
+
+
+
+
