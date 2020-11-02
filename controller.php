@@ -51,7 +51,7 @@ switch($regValue)
     </style><!--Стиль горизонтального меню-->
     <div class="head">
         <a href="index.html">назад</a>
-        <header><div class="title">О нас </div>
+        <header><div class="title">Добро пожаловать </div>
 
         </header><!--Заголовок в шапке страницы-->
     </div>
@@ -71,7 +71,7 @@ switch($regValue)
     <br>
 страница "Регистрация" -  registration
     <br>
-страница "Авторизация" - avtorisation
+страница "Авторизация" - autorisation
 </p>
 </font>
 <div class="footer">
