@@ -16,11 +16,14 @@
 		!empty($_REQUEST['password'])
 		and !empty($_REQUEST['password_confirm'])
 		and !empty($_REQUEST['login'])
+        and !empty($_REQUEST['mail'])
 	) {
 		//Пишем логин и пароль из формы в переменные (для удобства работы):
-		$login = $_REQUEST['login']; 
+		$login = $_REQUEST['login'];
+        $email=$_REQUEST['mail'];
 		$password = $_REQUEST['password']; 
 		$password_confirm = $_REQUEST['password_confirm']; //подтверждение пароля
+
 
 		//Если пароль и его подтверждение совпадают...
 		if ($password == $password_confirm) {
@@ -46,12 +49,21 @@
 					логин = $login, пароль = $saltedPassword, salt = $salt
 				*/
 				$query = 'INSERT INTO users SET login="'.$login.'", 
-					password="'.$saltedPassword.'", salt="'.$salt.'"';
+					password="'.$saltedPassword.'", salt="'.$salt.'",email="'.$email.'"';
 				mysqli_query($link, $query); 
 
 				//Выведем сообщение об успешной регистрации:
 				echo 'Вы успешно зарегистрированы!';
-				reguire_once("lk.php");
+                if (
+                    !empty($_REQUEST['password'])
+                    and !empty($_REQUEST['password_confirm'])
+                    and !empty($_REQUEST['login'])
+                ) {
+                    echo "<HTML><HEAD>
+                        <META HTTP-EQUIV='Refresh' CONTENT='0; URL=chit_bilit.php?='>
+                           </HEAD>";
+                }
+				//reguire_once("lk.html");
 			}
 			//Если $isLoginFree НЕ пустой - то логин занят!
 			else {

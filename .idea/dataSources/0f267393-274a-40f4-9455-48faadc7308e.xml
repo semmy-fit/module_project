@@ -1014,5 +1014,10 @@
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
+    <column id="250" parent="233" name="email">
+      <Position>4</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
   </database-model>
 </dataSource>
