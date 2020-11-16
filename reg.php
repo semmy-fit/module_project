@@ -17,10 +17,12 @@
 		and !empty($_REQUEST['password_confirm'])
 		and !empty($_REQUEST['login'])
         and !empty($_REQUEST['mail'])
+        and !empty($_REQUEST['role'])
 	) {
 		//Пишем логин и пароль из формы в переменные (для удобства работы):
 		$login = $_REQUEST['login'];
         $email=$_REQUEST['mail'];
+        $roles=$_REQUEST['role'];
 		$password = $_REQUEST['password']; 
 		$password_confirm = $_REQUEST['password_confirm']; //подтверждение пароля
 
@@ -49,7 +51,7 @@
 					логин = $login, пароль = $saltedPassword, salt = $salt
 				*/
 				$query = 'INSERT INTO users SET login="'.$login.'", 
-					password="'.$saltedPassword.'", salt="'.$salt.'",email="'.$email.'"';
+					password="'.$saltedPassword.'", salt="'.$salt.'",email="'.$email.'",role="'.$roles.'"';
 				mysqli_query($link, $query); 
 
 				//Выведем сообщение об успешной регистрации:
@@ -58,6 +60,7 @@
                     !empty($_REQUEST['password'])
                     and !empty($_REQUEST['password_confirm'])
                     and !empty($_REQUEST['login'])
+                    and !empty($_REQUEST['role'])
                 ) {
                     echo "<HTML><HEAD>
                         <META HTTP-EQUIV='Refresh' CONTENT='0; URL=chit_bilit.php?='>

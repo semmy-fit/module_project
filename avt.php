@@ -3,10 +3,17 @@
  $link=mysqli_connect('localhost','root','','module_syte')  or die(mysqli_connect_error());
 
 	//Если форма авторизации отправлена...
-	if ( !empty($_REQUEST['password']) and !empty($_REQUEST['login']) ) {
+	if ( !empty($_REQUEST['password']) and !empty($_REQUEST['login'])  ) {
 		//Пишем логин и пароль из формы в переменные (для удобства работы):
 		$login = $_REQUEST['login']; 
-		$password = $_REQUEST['password']; 
+		$password = $_REQUEST['password'];
+        $query = "SELECT role FROM users WHERE login='$login'";
+        $r = mysqli_query($link, $query) or die("error 1");
+        while($arr = mysqli_fetch_assoc($r)) {
+            echo "<tr>";
+            echo "<td>" . $arr['role'] . "</td>";
+            $roles=$arr['role'];
+        }
 
 		/*
 			Формируем и отсылаем SQL запрос:
@@ -39,10 +46,36 @@
 					(их мы берем из переменной $user!):
 				*/
 				
-				$_SESSION['login'] = $user['login']; 
+				$_SESSION['login'] = $user['login'];
+                $_SESSION['role']=$roles;
+                echo "$roles";
+
+
 
 				echo 'Вы успешно авторизовались!';
-				 require_once "chit_bilit.php"; 
+                if($roles=="4")//права администратора
+                {
+                    echo "<HTML><HEAD>
+                        <META HTTP-EQUIV='Refresh' CONTENT='0; URL=chit_bilit.php?='>
+                           </HEAD>";
+                }
+
+                if($roles=="5")//права модератора
+                {
+
+                    echo "<HTML><HEAD>
+                        <META HTTP-EQUIV='Refresh' CONTENT='0; URL=chit_bilit.php?='>
+                           </HEAD>";
+
+                }
+
+                if($roles=="6")// права обычного пользователя
+                {
+                    echo "<HTML><HEAD>
+                        <META HTTP-EQUIV='Refresh' CONTENT='0; URL=chit_bilit.php?='>
+                           </HEAD>";
+                }
+
 			}
 			//Если соленый пароль из базы НЕ совпадает с соленым паролем из формы...
 			else {

@@ -16,9 +16,10 @@
     <br>
     <br>
     <br>
-<a href="add_man.html"> Добавить </a>
+<a href="add_man.html" > Добавить </a>
 <br>
-<a href="record.html">Запись</a>
+<a href="record.html"   >Запись</a
+
  <p>
  <table border=1>
  <tr align="center">
@@ -30,12 +31,60 @@
  <td>Кол_во_экземпляров_на_руках</td>
  </tr>
  <?php
+
     $number=$_REQUEST['Номер'];
-  $link=mysqli_connect('localhost','root','','module_syte')  or die(mysqli_connect_error());
- 
+
+session_start();
+ $roles=$_SESSION['role'];
+
+ echo "$roles";
+
+ $link=mysqli_connect('localhost','root','','module_syte')  or die(mysqli_connect_error());
+
+
  $query = "SELECT * FROM chit_bilet ORDER by Номер";
  $r = mysqli_query($link, $query) or die("error 1");
-    
+   if($roles=="5")
+    {
+
+        echo " <script>
+                document.getElementById('noLink1').addEventListener('click', function(e) {
+                 e.preventDefault();
+                  alert('У вас недостаточно прав для выполнгения записи');
+               }, false);
+               document.get
+               
+                document.getElementById('noLink').addEventListener('click', function(e) {
+                 e.preventDefault();
+                  alert('У вас недостаточно прав добавления');
+               }, false);
+               document.get
+               
+               
+                  </script> ";
+
+    }
+
+    if($roles=6)
+    {
+        echo " <script>
+                document.getElementById('noLink1').addEventListener('click', function(e) {
+                 e.preventDefault();
+                  alert('У вас недостаточно прав для выполнгения записи');
+               }, false);
+               document.get
+               
+                document.getElementById('noLink').addEventListener('click', function(e) {
+                 e.preventDefault();
+                  alert('У вас недостаточно прав добавления');
+               }, false);
+               document.get
+               
+               
+                  </script> ";
+
+
+    }
  while($arr = mysqli_fetch_assoc($r))
  {
  echo "<tr>";
@@ -46,8 +95,8 @@
  echo "<td>".$arr['Автор']."</td>";
  echo "<td>".$arr['Кол_во_экземпляров_на_руках']."</td>";
  
-echo "<td> <a href=dell_man.php?Номер=".$arr['Номер']." > удалить </a></td>";
-echo "<td> <a href=update.html?Номер=".$arr['Номер']." > изменить </a></td>";
+echo "<td> <a id='noLink' href=dell_man.php?Номер=".$arr['Номер']."> удалить </a></td>";
+echo "<td> <a  href=update.html?Номер=".$arr['Номер']." > изменить </aclass></td>";
  echo "</tr>";
 
  }
