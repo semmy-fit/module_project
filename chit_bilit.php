@@ -4,6 +4,7 @@
 <title>Личный кабинет</title>
 <meta http-equiv="content-type" content="text/html"; charset="utf8">
     <link rel="stylesheet" type="text/css" href="style.css">
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
    <div class="head">
@@ -16,9 +17,9 @@
     <br>
     <br>
     <br>
-<a href="add_man.html" > Добавить </a>
+<a href="add_man.html?role=<?php $_REQUEST['role'] ?>"   id="add"> Добавить </a>
 <br>
-<a href="record.html"   >Запись</a
+<a href="record.html?role=<?php $_REQUEST['role']?>"  id="NoLinks"  >Запись</a
 
  <p>
  <table border=1>
@@ -34,54 +35,50 @@
 
     $number=$_REQUEST['Номер'];
 
-session_start();
- $roles=$_SESSION['role'];
+$role=$_REQUEST['role'];
 
- echo "$roles";
+$roles=$role;
+
+
+
+
 
  $link=mysqli_connect('localhost','root','','module_syte')  or die(mysqli_connect_error());
 
 
+
  $query = "SELECT * FROM chit_bilet ORDER by Номер";
  $r = mysqli_query($link, $query) or die("error 1");
-   if($roles=="5")
-    {
 
-        echo " <script>
-                document.getElementById('noLink1').addEventListener('click', function(e) {
-                 e.preventDefault();
-                  alert('У вас недостаточно прав для выполнгения записи');
-               }, false);
-               document.get
-               
-                document.getElementById('noLink').addEventListener('click', function(e) {
-                 e.preventDefault();
-                  alert('У вас недостаточно прав добавления');
-               }, false);
-               document.get
-               
-               
-                  </script> ";
+
+
+ if($roles=="5")
+    {
+         echo "<script>
+             function raz(e) {
+                     e.preventDefault();
+                     alert(' Вы не имеете права удалить запись');
+                  };
+         </script>";
 
     }
 
-    if($roles=6)
+    if($roles=="6")
     {
-        echo " <script>
-                document.getElementById('noLink1').addEventListener('click', function(e) {
+        echo "<script>
+             function raz(e) {
                  e.preventDefault();
-                  alert('У вас недостаточно прав для выполнгения записи');
-               }, false);
-               document.get
-               
-                document.getElementById('noLink').addEventListener('click', function(e) {
-                 e.preventDefault();
-                  alert('У вас недостаточно прав добавления');
-               }, false);
-               document.get
-               
-               
-                  </script> ";
+                 alert(' Вы не имеете права удалить запись');
+               };
+          </script>";
+
+        echo "<script>
+              function raz1(e) {
+                  e.preventDefault();
+                  alert(' Вы не имеете права изменить запись');
+                };
+      </script>";
+
 
 
     }
@@ -95,8 +92,8 @@ session_start();
  echo "<td>".$arr['Автор']."</td>";
  echo "<td>".$arr['Кол_во_экземпляров_на_руках']."</td>";
  
-echo "<td> <a id='noLink' href=dell_man.php?Номер=".$arr['Номер']."> удалить </a></td>";
-echo "<td> <a  href=update.html?Номер=".$arr['Номер']." > изменить </aclass></td>";
+echo "<td> <a  onclick='raz(event);'  href=dell_man.php?Номер=".$arr['Номер']." > удалить </a></td>";
+echo "<td> <a   onclick='raz1(event);'  href=update.html?Номер=".$arr['Номер']."  > изменить </aclass></td>";
  echo "</tr>";
 
  }

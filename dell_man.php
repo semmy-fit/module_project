@@ -8,10 +8,11 @@
 
      $link=mysqli_connect('localhost','root','','module_syte')  or die(mysqli_connect_error());
    $number=$_REQUEST['Номер'];
+$role=$_REQUEST['role'];
 $sql="delete from chit_bilet where Номер=$number";
 $r=mysqli_query($link, $sql) or die("error delete");
  echo "<HTML><HEAD>
- <META HTTP-EQUIV='Refresh' CONTENT='0; URL=chit_bilit.php'>
+ <META HTTP-EQUIV='Refresh' CONTENT='0; URL=chit_bilit.php?role=$role'>
  </HEAD>";
  
      ?>

@@ -56,7 +56,7 @@
                 if($roles=="4")//права администратора
                 {
                     echo "<HTML><HEAD>
-                        <META HTTP-EQUIV='Refresh' CONTENT='0; URL=chit_bilit.php?='>
+                        <META HTTP-EQUIV='Refresh' CONTENT='0; URL=table_users.php?='>
                            </HEAD>";
                 }
 
@@ -64,7 +64,7 @@
                 {
 
                     echo "<HTML><HEAD>
-                        <META HTTP-EQUIV='Refresh' CONTENT='0; URL=chit_bilit.php?='>
+                        <META HTTP-EQUIV='Refresh' CONTENT='0; URL=chit_bilit.php?role=$roles'>
                            </HEAD>";
 
                 }
@@ -72,8 +72,11 @@
                 if($roles=="6")// права обычного пользователя
                 {
                     echo "<HTML><HEAD>
-                        <META HTTP-EQUIV='Refresh' CONTENT='0; URL=chit_bilit.php?='>
+                        <META HTTP-EQUIV='Refresh' CONTENT='0; URL=chit_bilit.php?role=$roles '>
+                        
                            </HEAD>";
+
+
                 }
 
 			}

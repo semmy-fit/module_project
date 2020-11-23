@@ -26,11 +26,14 @@
         <td>password </td>
         <td>salt</td>
         <td>email</td>
+        <td>role</td>
 
     </tr>
     <?php
 
 
+    $roles=$_REQUEST['role'];
+    echo "$roles";
 
     $link=mysqli_connect('localhost','root','','module_syte')  or die(mysqli_connect_error());
 
@@ -44,14 +47,36 @@
         echo "<td>".$arr['password']."</td>";
         echo "<td>".$arr['salt']."</td>";
         echo "<td>".$arr['email']."</td>";
+        echo "<td>".$arr['role']."</td>";
         $key=$arr['email'];
         $code=$key;
         $code=$_GET['email'];
 
 
-        echo "<td> <a href=dell_users.php?codes=".$arr['login']." > удалить </a></td>";
-        echo "<td> <a href=edit_users.html?codes=".$arr['login']." > изменить </a></td>";
+        echo "<td> <a  id='noLink' href=dell_users.php?codes=".$arr['login']." > удалить </a></td>";
+        echo "<td> <a id='noLink1' href=edit_users.html?codes=".$arr['login']." > изменить </a></td>";
         echo "</tr>";
+
+    }
+
+    if($roles=="4")
+    {
+
+        echo " <script>
+                document.getElementById('noLink1').addEventListener('click', function(e) {
+                 e.preventDefault();
+                  alert('У вас недостаточно прав для выполнгения записи');
+               }, false);
+               document.get
+               
+                document.getElementById('noLink').addEventListener('click', function(e) {
+                 e.preventDefault();
+                  alert('У вас недостаточно прав добавления');
+               }, false);
+               document.get
+               
+               
+                  </script> ";
 
     }
     ?>
